@@ -1,0 +1,18 @@
+name: Flutter Workflow
+env:
+  FLUTTER_VERSION: "3.7.3"
+on: push
+jobs:
+  test:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Flutter
+        uses: britannio/action-install-flutter@v1
+        with:
+          version: $FLUTTER_VERSION
+      - name: Get Packages
+        run: flutter pub get
+      - name: Build
+        run: flutter build web
